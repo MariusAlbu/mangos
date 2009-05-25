@@ -6089,6 +6089,8 @@ void Aura::PeriodicTick()
                 gain_multiplier = GetSpellProto()->EffectMultipleValue[GetEffIndex()];
 
                 if(Player *modOwner = pCaster->GetSpellModOwner())
+                    if(!gain_multiplier)
+                    gain_multiplier = 1;
                     modOwner->ApplySpellMod(GetId(), SPELLMOD_MULTIPLE_VALUE, gain_multiplier);
             }
 
